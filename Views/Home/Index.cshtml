@@ -1,0 +1,66 @@
+﻿@model LoginViewUser
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <h1 >Welcome to the Dojo Activity Center</h1>
+        </div>
+   </div>
+
+    <div class="row">
+        <div class="col-5">
+            <h1 >Register</h1>
+        </div>
+
+        <div class="offset-1 col-5">
+            <h1>Login</h1>  
+        </div>
+   </div>
+
+    <br>   
+
+    <div class="row">
+
+        <div class="col-5">
+            <form asp-action="ProcessRegister" asp-controller="Home" method="post">
+                <span asp-validation-for="User.Name" class="red"></span>
+                <label asp-for="User.Name"></label>
+                <input asp-for="User.Name" class="form-control input-lg">
+                <p></p>
+
+                <span asp-validation-for="User.Email" class="red"></span>
+                <label asp-for="User.Email"></label>
+                <input asp-for="User.Email" class="form-control input-lg">
+                <p></p>
+
+                <!-- @Html.ValidationMessage("CustomError") -->
+                <span asp-validation-for="User.Password" class="red"></span>
+                <label asp-for="User.Password"></label>
+                <input asp-for="User.Password" class="form-control input-lg">
+                <p></p>
+
+                <span asp-validation-for="User.Confirm" class="red"></span>
+                <label asp-for="User.Confirm"></label>
+                <input asp-for="User.Confirm" class="form-control input-lg">
+                <br>
+
+                <input type="submit" value="Register" class="form-control input-md btn-primary btn-block">
+            </form>
+        </div>
+
+        <div class="offset-1 col-5">
+            <form asp-action="ProcessLogin" asp-controller="Home" method="post">    
+                <span asp-validation-for="LoginUser.LoginUserEmail" class="red"></span>
+                <label asp-for="LoginUser.LoginUserEmail"></label>
+                <input asp-for="LoginUser.LoginUserEmail" class="form-control input-lg">
+                <p></p>
+
+                <span asp-validation-for="LoginUser.LoginUserPassword" class="red"></span>
+                <label asp-for="LoginUser.LoginUserPassword"></label>
+                <input asp-for="LoginUser.LoginUserPassword" class="form-control input-lg">
+                <br>
+
+                <input type="submit" value="Login" class="form-control input-md btn-primary btn-block">
+            </form>
+        </div>
+    </div>
+</div>

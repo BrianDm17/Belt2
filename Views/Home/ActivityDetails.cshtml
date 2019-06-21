@@ -1,0 +1,52 @@
+@model Activity
+
+<div class="container">
+    <div class="row border-bottom">
+        <div class="col-7 mr-auto"><h2>Dojo Activity Center</h2></div>
+        <div class="offset-1 col-2 my-auto text-right"><h5><a href="/dashboard">Dashboard</a></h5></div>
+        <div class="col-2 my-auto  text-center"><h5><a href="/logout">Log Out</a></h5></div>
+    </div>
+    <br>
+    <br>
+    <div class="row ">
+        <div class="col-7 mr-auto"><h2>@Model.Title</h2></div>
+    </div>
+    <br>
+
+    <div class="row ">
+        <div class="offset-1 col-7 mr-auto"><h4>Event Coordinator: @Model.Creator.Name</h4></div>
+    </div>
+    <br>
+
+    <div class="row ">
+        <div class="offset-1 col-7 mr-auto">
+            <h4>Description:</h4>
+            <p class="offset-1 col-7 mr-auto">@Model.Description</p>
+        </div>
+    </div>
+    <br>
+
+    <!-- <div class="row ">
+        <div class="col mr-auto"><h4>Date: @Model.ActivityDate.ToString("MMMM d yyyy @ h:mm tt")</h4></div>
+
+        <div class="col mr-auto"><h4>Date: @Model.ActivityTime.ToString("h:mm tt")</h4></div>
+        <div class="col mr-auto"><h4>Date: @Model.Duration</h4></div>
+                <div class="col mr-auto"><h4>Date: @Model.DurationUnit</h4></div>
+    </div> -->
+    <br>
+    <div class="row ">
+        <div class="offset-1  col-8 mr-auto">Participants:</h4></div>
+    </div>
+
+    <div class="row">
+        <div class="offset-1 col-5">
+            <ul>
+                @foreach(UA u in @Model.UserList)
+                {
+                    <li>@u.User.Name</li>
+                }
+            </ul>
+        </div>
+    </div>
+  
+</div>

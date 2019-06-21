@@ -1,0 +1,74 @@
+@model List<Activity>
+
+<div class="container"></div>
+    <div class="row border-bottom">
+        <div class="col-5 mr-auto"><h2>Dojo Activity Center</h2></div>
+        <div class="col-2 my-auto  text-center"><h5>Welcome, @ViewBag.User.Name</h5></div>
+        <div class="col-2 my-auto  text-center"><h5><a href="/logout">Log Out</a></h5></div>
+    </div>
+
+    <br>
+ 
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Activity</th>
+                <th>Date and Time</th>
+                <th>Duration</th>
+                <th>Event Coordinator</th>
+                <th>No of Participants</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+            @{
+                foreach(Activity a in Model)
+                {
+                    <tr>
+                    <td><a href="/activitydetails/@a.ActivityId">@a.Title</a></td>
+                    <td>@a.ActivityTime.ToString("MMMM d yyyy") @a.ActivityTime.ToString("h:mm tt") </td>
+                    <td>@a.Duration @a.DurationUnit</td>
+                    <td>@a.Creator.Name</td>
+                    <td>@a.UserList.Count()</td>
+
+                    @{
+                        bool found = false;
+                        if(ViewBag.UserId == a.UserId)
+                        {
+                            <td><a href="/deleteactivity/@a.ActivityId">Delete</a></td>
+                        }
+                        else
+                        {
+                            @foreach(UA ua in a.UserList)
+                            {
+                                if(ViewBag.UserId  == ua.UserId)
+                                {
+                                    found = true;
+                                    <td><a href="/leaveactivity/@a.ActivityId">Leave</a></td>
+                                }
+                            }
+
+                            if(!found)
+                            {
+                                  <td><a href="/joinactivity/@a.ActivityId">Join</a></td>
+                            }
+                        }
+                    }
+
+                    </tr>
+                }
+            }
+
+        </tbody>
+
+    </table>
+
+
+    <div class="row flex mt-4">
+        <div class="offset-10 col-2">
+            <a href="/newactivity" class="btn btn-primary" >Add New Activity</a>
+        </div>
+    </div>
+
+</div>
