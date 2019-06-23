@@ -47,7 +47,7 @@ namespace ActivityCenter.Controllers
                 {
                     // Manually add a ModelState error to the Email field, with provided
                     // error message
-                    ModelState.AddModelError("Email", "Email already in use!");
+                    ModelState.AddModelError("User.Email", "Email already in use!");
                     
                     // You may consider returning to the View at this point
                     return View("Index");
@@ -68,7 +68,7 @@ namespace ActivityCenter.Controllers
                 {
                     // Manually add a ModelState error to the Email field, with provided
                     // error message
-                    ModelState.AddModelError("Password", "Password is not strong");
+                    ModelState.AddModelError("User.Password", "Password is not strong");
                     
                     // You may consider returning to the View at this point
                     return View("Index");
